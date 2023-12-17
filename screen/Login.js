@@ -10,6 +10,10 @@ const Login = () => {
   const handleNavigation = () => {
     navigation.navigate('HomeScreen',{userEmail:email,userPassword:password})
   }
+  const clearHandler = () => {
+    setEmail('')
+    setPassword('')
+  }
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -30,7 +34,7 @@ const Login = () => {
             <TouchableOpacity onPress={handleNavigation} style={styles.buttonView}>
                 <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonView}>
+            <TouchableOpacity onPress={clearHandler} style={styles.buttonView}>
                 <Text style={styles.buttonText}>Clear</Text>
             </TouchableOpacity>
           </View>
@@ -54,7 +58,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
         width: '100%',
         gap: 10,
-        marginBottom:50
+      // marginBottom: 50,
+        marginTop:100
+        
+        
     },
     inputView: {
         gap:20
