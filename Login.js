@@ -1,18 +1,26 @@
-import {View, Text, Button, TextInput, StyleSheet, Image, SafeAreaView, KeyboardAvoidingView} from 'react-native';
+import {View, Text, Button, TextInput, StyleSheet, Image, SafeAreaView, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 
 const Login = () => {
-  const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [emial, setEmail] = useState('');
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <Image style={styles.imageView} source={require('./assets/leaff.png')} />
-      <Text style={styles.titleView}>Welcome To LeafLover</Text>
+      <Image resizeMode='contain' style={styles.imageView} source={require('./assets/leaff.png')} />
         <View style={styles.inputView}>
-            <TextInput style={styles.textView} placeholder="Username,email address or mobile number" />
-            <TextInput style={styles.textView} placeholder="Password" />
-        </View>
+              <TextInput style={styles.textView} placeholder="Username,email address or mobile number"
+                  value={email}
+                  onChangeText={(text)=>setEmail(text)}
+              />
+              <TextInput style={styles.textView} placeholder="Password"
+                  value={password}
+                  secureTextEntry={true}
+                  onChangeText={(text)=>setPassword(text)}
+              />
+          </View>
+          <TouchableOpacity style={styles.buttonView}>
+              <Text style={styles.buttonText}>Login/SignUp</Text>
+          </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -31,11 +39,9 @@ const styles = StyleSheet.create({
   },
     mainContainer: {
     alignItems: 'center',
-    
-    width: '100%',
-    borderWidth: 1,
-    borderColor: 'black',
-    justifyContent: 'center',
+        width: '100%',
+        gap: 10,
+        marginBottom:50
     },
     inputView: {
         gap:20
@@ -45,6 +51,19 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginVertical: 40,
         fontWeight:'900'
-    }
+    },
+    buttonView: {
+        backgroundColor: '#396d0c',
+        width: 150,
+        borderRadius: 15,
+        marginTop:30
+    },
+    buttonText: {
+        color: 'white',
+        fontSize:16,
+        fontWeight: 'bold',
+        padding: 10,
+        textAlign:'center',
+    },
 });
 export default Login;
